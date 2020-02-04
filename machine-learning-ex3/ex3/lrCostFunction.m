@@ -57,6 +57,10 @@ beta = h - y;
 
 grad(1,:)              =   ( ( 1 / m ) * X' * beta )(1,:);
 grad(2:length(grad),:) = ( ( ( 1 / m ) * X' * beta ) + ( ( lambda / m ) * theta ) )(2:length(grad),:); % done, 'kay, thanks, bye. There's magic in that body. Have a good time, girls. Karl Adonis Pierre Joseph d'Europe rules.
+
+% 1.3.3.	Vectorizing regularized logistic regression.
+
+% Well... Now, I get why the regularized cost function and gradient descent implementation was needed to get the right results. ex3.m only checks from there. I didn't read the hole exam sheet before answering. I mean, I read it exercise by exercise as I progressed. And even then, I stuck to page 6, but there was the last part of the exercise at page 7. And he put friendly tips up to the middle of page 8, though only one's new. On the plus side, I managed to get the right answer before even finishing. It's not bad... I guess. NB: I still have lots of efforts to do to be patient.
 % =============================================================
 
 grad = grad(:);
