@@ -48,18 +48,16 @@ X = [ones(m, 1) X];
 %         fmincg (@(t)(lrCostFunction(t, X, (y == c), lambda)), ...
 %                 initial_theta, options);
 %
+initial_theta = zeros(n + 1, 1);
+options = optimset('GradObj', 'on', 'MaxIter', 50);
 
+%for c = 1:num_labels,
+	       %[theta] = fmincg(@(t)(lrCostFunction(t, X, ( y == c ), lambda)), initial_theta, options); does not work with predictOneVsAll.m
 
+for c = 1:num_labels,
+	all_theta(c, :) = fmincg(@(t)(lrCostFunction(t, X, ( y == c ), lambda)), initial_theta, options);
 
-
-
-
-
-
-
-
-
-
+% Mh... I understood the course, and I learnt it from it. I read the instructions, and I followed them. I studied the code, and I analyzed its functions, parameters, variables... Yet I don't understand. Not finding what to do, I followed the example. I don't like that. It's not right. I'm not quite submitting my own answer. I shall RTFM again. I must take a closer look at fmincg and the parameters we're passing to it. All in all, I have to keep studying this. Besides, I sense a way to vectorize this. Christ, don't I like that.
 % =========================================================================
 
 

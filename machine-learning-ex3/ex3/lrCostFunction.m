@@ -49,14 +49,14 @@ grad = zeros(size(theta));
 %X = X'; theta = theta % with theta = [ -2; -1; 1; 2 ]
 h = sigmoid( X * theta ); 
 
-J = ( 1 / m ) * sum( -y' * log( h ) - ( 1 - y )' * log( 1 - h ) ) + ( lambda / ( 2 * m ) ) * sum( theta(2:length(theta)) .^ 2 );
+J = ( 1 / m ) * sum( -y' * log( h ) - ( 1 - y )' * log( 1 - h ) ) + ( lambda / ( 2 * m ) ) * sum( theta(2:end) .^ 2 );
 
 % 1.3.2.	Vectorizing the gradient
 
 beta = h - y;
 
-grad(1,:)              =   ( ( 1 / m ) * X' * beta )(1,:);
-grad(2:length(grad),:) = ( ( ( 1 / m ) * X' * beta ) + ( ( lambda / m ) * theta ) )(2:length(grad),:); % done, 'kay, thanks, bye. There's magic in that body. Have a good time, girls. Karl Adonis Pierre Joseph d'Europe rules.
+grad(1, :)     =   ( ( 1 / m ) * X' * beta )(1, :);
+grad(2:end, :) = ( ( ( 1 / m ) * X' * beta ) + ( ( lambda / m ) * theta ) )(2:end, :); % done, 'kay, thanks, bye. There's magic in that body. Have a good time, girls. Karl d'Europe rules.
 
 % 1.3.3.	Vectorizing regularized logistic regression.
 
