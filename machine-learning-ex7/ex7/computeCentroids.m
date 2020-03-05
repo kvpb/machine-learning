@@ -11,7 +11,7 @@ function centroids = computeCentroids(X, idx, K)
 %
 
 % Useful variables
-[m n] = size(X);
+[m n] = size(X); % C'est pas con, cca.
 
 % You need to return the following variables correctly.
 centroids = zeros(K, n);
@@ -25,14 +25,38 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
+%x  = X        ; % 
+%c  = idx      ; % c^(i) is the index (from 1 to K) of cluster centroid closest to x^(i).
+%K  =          ; % 
+%mu = centroids; % mu_k is the average (mean) of points assigned to cluster k.
+%examples = zeros(K, 1);
+%C  = examples ; % C_k is the set of examples [x?] that are assigned to centroid k.
+%m  =          ; % 
+%n  =          ; % 
+% We're given X, idx, K, m, n and centroids.
+%	save _X.txt X, save _idx.txt idx, save _K.txt K, save _centroids.txt centroids, save _m.txt m, save _n.txt n
 
+%for i = 1:m,
+%	;
+%end;
+%for k = 1:K,
+%	mu(k) = ( 1 / abs( C(k) ) ) * sum( x(i) );
+%end;
+%
+%centroids = mu;
+% Ah, vas-y, foutez-moi la paix... Je vais la faire aa ma faccon, d'abord salement.
+%% en gros je veux trouver les x^(i) assignes a un cluster centroid k,
+%%% avec C_k qui est en fait le set d'examples x^(i) du cendroid,
+%% et ensuite, je veux calculer la moyenne de ces x^(i) 
+%%% qui donne le centroid k mu_k correspondant
 
+for k = 1:K,
+	centroids(k, :) = ( 1 / length(find(idx == k)) ) * sum( X(find(idx == k), :) ); %centroids(k, :) = ( 1 / length(X(idx == k, :)) ) * sum( X(idx == k, :) );
+end; % Ce Frankenstein de vectorization iteerative deegueulasse vous eetait offert par KVPB. C'est compleetement pourlingue. L'essentiel, c'est que cca fonctionne.
 
-
-
-
-
-
+%
+% KVPB's Vectorization
+%	shall use boolean matrices to do logical masking, I guess, like I did before with eye()
 % =============================================================
 
 
